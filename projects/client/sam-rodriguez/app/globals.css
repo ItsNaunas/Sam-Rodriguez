@@ -1,0 +1,207 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-warm-bg text-charcoal-500 antialiased;
+    min-height: 100vh;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Hero Section Layout */
+  .hero-section {
+    @apply pt-[120px] pb-[80px] md:pt-[140px] md:pb-[100px] lg:pt-[160px] lg:pb-[120px];
+  }
+
+  .hero-container {
+    @apply mx-auto px-6 md:px-8 lg:px-12;
+    max-width: 1280px;
+  }
+
+  /* Hero Typography */
+  .hero-headline-line1 {
+    @apply font-inter font-bold text-text-100 leading-[1.05] tracking-tight;
+    font-size: clamp(48px, 5vw, 72px);
+  }
+
+  .hero-headline-line2 {
+    @apply font-playfair italic font-bold text-gold-500 leading-[1.05] tracking-tight;
+    font-size: clamp(44px, 4.8vw, 68px);
+    margin-top: -8px;
+  }
+
+  .hero-subheading {
+    @apply text-text-80 font-inter leading-[1.5] mt-5;
+    font-size: clamp(16px, 1.5vw, 20px);
+    max-width: 560px;
+  }
+
+  .hero-right-paragraph {
+    @apply text-text-80 font-inter leading-[1.6];
+    font-size: clamp(15px, 1.4vw, 18px);
+  }
+
+  /* Hero Availability Pill */
+  .hero-pill {
+    @apply inline-flex items-center gap-2 px-4 py-3 md:px-5 md:py-3.5 rounded-full border text-sm font-inter font-medium;
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(225, 200, 92, 0.25);
+  }
+
+  /* Button Styles */
+  .btn-primary {
+    @apply bg-forest-500 text-white px-8 py-4 font-inter font-semibold transition-all duration-300 hover:bg-forest-600 focus:outline-none focus:ring-2 focus:ring-forest-500 focus:ring-offset-2 focus:ring-offset-warm-bg;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(33, 64, 52, 0.2);
+  }
+
+  .btn-ghost {
+    @apply border border-charcoal-500 text-charcoal-500 px-8 py-4 rounded-lg font-inter font-medium transition-all duration-300 hover:bg-warm-surface hover:border-charcoal-600 focus:outline-none focus:ring-2 focus:ring-charcoal-500 focus:ring-offset-2 focus:ring-offset-warm-bg;
+  }
+
+  /* Gold Underline Animation */
+  .gold-underline {
+    position: relative;
+    display: inline-block;
+  }
+
+  .gold-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: #D6A73C;
+    transition: width 0.6s ease-in-out;
+  }
+
+  .gold-underline:hover::after {
+    width: 100%;
+  }
+
+  /* Card Styles */
+  .card-dark {
+    @apply bg-white rounded-xl p-6 md:p-8 border border-gray-200 shadow-lg transition-all duration-300 hover:border-gray-300 hover:shadow-xl hover:-translate-y-1;
+  }
+
+  /* Pill/Tag Styles */
+  .pill-tag {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100 border border-orange-300 text-sm text-gray-900;
+  }
+
+  .pill-tag::before {
+    content: '';
+    @apply w-2 h-2 rounded-full bg-orange-500;
+  }
+
+  /* Gold Glow Effect */
+  .gold-glow {
+    position: relative;
+  }
+
+  .gold-glow::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(243, 229, 158, 0.15) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* Section Spacing */
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  /* Container */
+  .container-custom {
+    @apply max-w-7xl mx-auto px-6 md:px-8 lg:px-12;
+  }
+
+  /* Pull Quote */
+  .pull-quote {
+    @apply font-playfair italic text-2xl md:text-3xl lg:text-4xl leading-relaxed text-charcoal-500;
+  }
+
+  .pull-quote span {
+    @apply text-gold-500 not-italic;
+  }
+
+  /* Fade In Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  /* Vignette Effect */
+  .vignette {
+    position: relative;
+  }
+
+  .vignette::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.1) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Screen reader only - accessible but hidden visually */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  /* Remove sr-only styles when focused */
+  .focus\:not-sr-only:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: initial;
+    margin: initial;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+
+  /* Radial gradient utility */
+  .bg-gradient-radial {
+    background-image: radial-gradient(circle at center, var(--tw-gradient-stops));
+  }
+}
+
