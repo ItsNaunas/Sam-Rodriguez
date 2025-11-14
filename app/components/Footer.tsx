@@ -67,8 +67,8 @@ export default function Footer({ settings }: FooterProps) {
               How I Help
             </h4>
             <ul className="space-y-2">
-              {serviceLinks.map((link) => (
-                <li key={link.href}>
+              {serviceLinks.map((link, index) => (
+                <li key={`${link.href}-${index}`}>
                   <a
                     href={link.href}
                     className="text-gold-100 hover:text-gold-300 transition-colors text-sm"

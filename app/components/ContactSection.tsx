@@ -15,6 +15,7 @@ export default function ContactSection() {
                 src="/images/placeholder-contact.jpg"
                 alt="Sam Rodriguez writing or thinking in golden-hour light"
                 fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
             </div>

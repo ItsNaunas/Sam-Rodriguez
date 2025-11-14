@@ -17,6 +17,7 @@ export default function Hero({ content }: HeroProps) {
             src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop&q=80"
             alt={content.portraitAlt}
             fill
+            sizes="100vw"
             className="object-cover opacity-60"
             priority
           />
