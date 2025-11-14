@@ -52,38 +52,40 @@ export default function Hero({ content }: HeroProps) {
 
         {/* Bottom content boxes - positioned absolutely */}
         <div className="relative min-h-0 pb-12 md:pb-16">
-          {/* Left box - Trust/Proof elements */}
-          <div className="absolute bottom-12 md:bottom-16 left-6 md:left-12 max-w-xs bg-white rounded-2xl p-4 md:p-6 shadow-xl z-20">
-            {/* Stats/Proof */}
-            <div className="flex items-center gap-4 md:gap-6">
-              <div>
-                <div className="font-playfair text-xl md:text-2xl font-bold text-charcoal-900">10+</div>
-                <div className="font-inter text-xs text-charcoal-500 uppercase tracking-wide">Years</div>
-              </div>
-              <div>
-                <div className="font-playfair text-xl md:text-2xl font-bold text-charcoal-900">50+</div>
-                <div className="font-inter text-xs text-charcoal-500 uppercase tracking-wide">Leaders</div>
-              </div>
-              <div>
-                <div className="font-playfair text-xl md:text-2xl font-bold text-charcoal-900">12</div>
-                <div className="font-inter text-xs text-charcoal-500 uppercase tracking-wide">Time Zones</div>
+          <div className="flex flex-col gap-4 sm:gap-6 px-6 sm:px-10 md:px-0">
+            {/* Left box - Trust/Proof elements */}
+            <div className="relative max-w-full sm:max-w-xs bg-white rounded-2xl p-4 md:p-6 shadow-xl z-20 md:absolute md:bottom-16 md:left-12">
+              {/* Stats/Proof */}
+              <div className="flex flex-wrap items-center justify-between gap-4 md:gap-6">
+                <div>
+                  <div className="font-playfair text-xl md:text-2xl font-bold text-charcoal-900">10+</div>
+                  <div className="font-inter text-xs text-charcoal-500 uppercase tracking-wide">Years</div>
+                </div>
+                <div>
+                  <div className="font-playfair text-xl md:text-2xl font-bold text-charcoal-900">50+</div>
+                  <div className="font-inter text-xs text-charcoal-500 uppercase tracking-wide">Leaders</div>
+                </div>
+                <div>
+                  <div className="font-playfair text-xl md:text-2xl font-bold text-charcoal-900">12</div>
+                  <div className="font-inter text-xs text-charcoal-500 uppercase tracking-wide">Time Zones</div>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Right box - CTA - Bottom right corner */}
-          <div className="absolute bottom-12 md:bottom-16 right-6 md:right-12 max-w-sm bg-white rounded-2xl p-6 md:p-8 shadow-xl z-20">
-            <div className="space-y-4">
-              <a
-                href={content.primaryCTA.link}
-                className="inline-flex items-center gap-2 bg-forest-500 text-white px-6 py-3 rounded-lg font-inter font-semibold hover:bg-forest-600 transition-all shadow-lg hover:shadow-xl w-full justify-center text-sm md:text-base"
-              >
-                {content.primaryCTA.label}
-                <span className="w-2 h-2 rounded-full bg-red-500"></span>
-              </a>
-              <p className="font-inter text-charcoal-600 leading-relaxed text-sm md:text-base italic text-center">
-                No pitch. No pressure. Just clarity.
-              </p>
+            {/* Right box - CTA - Bottom right corner */}
+            <div className="relative max-w-full sm:max-w-sm bg-white rounded-2xl p-6 md:p-8 shadow-xl z-20 md:absolute md:bottom-16 md:right-12">
+              <div className="space-y-4">
+                <a
+                  href={content.primaryCTA.link}
+                  className="inline-flex items-center gap-2 bg-forest-500 text-white px-6 py-3 rounded-lg font-inter font-semibold hover:bg-forest-600 transition-all shadow-lg hover:shadow-xl w-full justify-center text-sm md:text-base"
+                >
+                  {content.primaryCTA.label}
+                  <span className="w-2 h-2 rounded-full bg-red-500"></span>
+                </a>
+                <p className="font-inter text-charcoal-600 leading-relaxed text-sm md:text-base italic text-center">
+                  No pitch. No pressure. Just clarity.
+                </p>
+              </div>
             </div>
           </div>
         </div>
