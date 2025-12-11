@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
         {
           success: false,
           error: 'Invalid input data',
-          details: validationResult.error.errors,
+          details: validationResult.error.issues,
         } as APIResponse,
         { status: 400 }
       )

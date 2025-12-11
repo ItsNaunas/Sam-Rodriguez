@@ -66,6 +66,7 @@ export interface APIResponse {
   metrics?: CalculatorOutputs
   inputs?: SanitizedInputs
   error?: string
+  details?: Array<{ path: (string | number)[]; message: string; code: string }>
 }
 
 export interface EmailSubmission {
