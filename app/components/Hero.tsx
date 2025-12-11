@@ -5,9 +5,10 @@ import type { HeroContent } from '@/lib/types'
 
 interface HeroProps {
   content: HeroContent
+  onCalculatorOpen?: () => void
 }
 
-export default function Hero({ content }: HeroProps) {
+export default function Hero({ content, onCalculatorOpen }: HeroProps) {
   return (
     <section id="home" className="relative min-h-screen overflow-hidden bg-charcoal-900">
       {/* Large landscape background image */}
@@ -75,15 +76,17 @@ export default function Hero({ content }: HeroProps) {
             {/* Right box - CTA - Bottom right corner */}
             <div className="relative max-w-full sm:max-w-sm bg-white rounded-2xl p-6 md:p-8 shadow-xl z-20 md:absolute md:bottom-16 md:right-12">
               <div className="space-y-4">
-                <a
-                  href={content.primaryCTA.link}
+                <button
+                  onClick={onCalculatorOpen}
                   className="inline-flex items-center gap-2 bg-forest-500 text-white px-6 py-3 rounded-lg font-inter font-semibold hover:bg-forest-600 transition-all shadow-lg hover:shadow-xl w-full justify-center text-sm md:text-base"
                 >
-                  {content.primaryCTA.label}
-                  <span className="w-2 h-2 rounded-full bg-red-500"></span>
-                </a>
+                  Calculate Your Opportunity Cost
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                  </svg>
+                </button>
                 <p className="font-inter text-charcoal-600 leading-relaxed text-sm md:text-base italic text-center">
-                  No pitch. No pressure. Just clarity.
+                  Free 3-minute audit • Instant personalized report
                 </p>
               </div>
             </div>
