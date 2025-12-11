@@ -6,9 +6,25 @@
 import OpenAI from 'openai'
 import type { SanitizedInputs, CalculatorOutputs } from './types'
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-})
+// Initialize OpenAI client only if API key is available
+let openai: OpenAI | null = null
+
+function getOpenAIClient(): OpenAI | null {
+  if (openai) {
+    return openai
+  }
+
+  const apiKey = process.env.OPENAI_API_KEY
+  if (!apiKey) {
+    console.warn(
+      'Missing OPENAI_API_KEY environment variable. LLM report generation will use fallback. See ENV-SETUP.md for instructions.'
+    )
+    return null
+  }
+
+  openai = new OpenAI({ apiKey })
+  return openai
+}
 
 /**
  * Format currency for display
@@ -122,9 +138,17 @@ export async function generateOpportunityReport(
   outputs: CalculatorOutputs
 ): Promise<string> {
   try {
+    const client = getOpenAIClient()
+    
+    // If OpenAI is not configured, use fallback immediately
+    if (!client) {
+      console.warn('OpenAI not configured. Using fallback report.')
+      return generateFallbackReport(inputs, outputs)
+    }
+
     const prompt = buildPrompt(inputs, outputs)
     
-    const completion = await openai.chat.completions.create({
+    const completion = await client.chat.completions.create({
       model: 'gpt-4o',
       messages: [
         {

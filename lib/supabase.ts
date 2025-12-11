@@ -7,7 +7,7 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js'
 
 let supabaseClient: SupabaseClient | null = null
 
-function getSupabaseClient(): SupabaseClient {
+function getSupabaseClient(): SupabaseClient | null {
   if (supabaseClient) {
     return supabaseClient
   }
@@ -16,9 +16,10 @@ function getSupabaseClient(): SupabaseClient {
   const supabaseAnonKey = process.env.SUPABASE_ANON_KEY
 
   if (!supabaseUrl || !supabaseAnonKey) {
-    throw new Error(
-      'Missing Supabase environment variables. Please set SUPABASE_URL and SUPABASE_ANON_KEY in your .env.local file. See ENV-SETUP.md for instructions.'
+    console.warn(
+      'Missing Supabase environment variables. Email storage will be skipped. Please set SUPABASE_URL and SUPABASE_ANON_KEY in your environment variables. See ENV-SETUP.md for instructions.'
     )
+    return null
   }
 
   supabaseClient = createClient(supabaseUrl, supabaseAnonKey)
@@ -35,6 +36,12 @@ function getSupabaseClient(): SupabaseClient {
 export async function storeCalculatorLead(email: string, metadata: any) {
   try {
     const supabase = getSupabaseClient()
+    
+    if (!supabase) {
+      console.warn('Supabase not configured. Skipping email storage.')
+      return { success: false, skipped: true }
+    }
+
     const { data, error } = await supabase
       .from('calculator_leads')
       .insert([
@@ -48,12 +55,14 @@ export async function storeCalculatorLead(email: string, metadata: any) {
 
     if (error) {
       console.error('Supabase error:', error)
-      throw new Error(`Failed to store email: ${error.message}`)
+      // Don't throw - just log the error so the API doesn't fail
+      return { success: false, error: error.message }
     }
 
     return { success: true, data }
   } catch (error) {
     console.error('Error storing calculator lead:', error)
-    throw error
+    // Don't throw - just log the error so the API doesn't fail
+    return { success: false, error: error instanceof Error ? error.message : 'Unknown error' }
   }
 }
