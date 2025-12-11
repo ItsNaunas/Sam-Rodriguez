@@ -120,16 +120,16 @@ export default function MultiStepForm() {
       {currentStep <= 3 && (
         <div className="mb-8">
           <div className="flex justify-between items-center mb-2">
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+            <span className="text-sm font-medium text-gold-400 font-inter">
               Step {currentStep} of 3
             </span>
-            <span className="text-sm text-gray-500">
+            <span className="text-sm text-gold-500/70 font-inter">
               {Math.round((currentStep / 3) * 100)}% Complete
             </span>
           </div>
-          <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+          <div className="w-full bg-charcoal-800 rounded-full h-2">
             <div
-              className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+              className="bg-gold-500 h-2 rounded-full transition-all duration-300"
               style={{ width: `${(currentStep / 3) * 100}%` }}
             ></div>
           </div>
@@ -137,7 +137,7 @@ export default function MultiStepForm() {
       )}
 
       {/* Form Steps */}
-      <div className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg border border-gray-200 dark:border-gray-700">
+      <div className="bg-charcoal-800 rounded-xl p-8 shadow-lg border border-gold-500/20">
         {currentStep === 1 && (
           <Step1Pricing formData={formData} onChange={updateFormData} />
         )}
@@ -156,11 +156,11 @@ export default function MultiStepForm() {
 
         {/* Navigation Buttons */}
         {currentStep <= 3 && (
-          <div className="flex justify-between mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+          <div className="flex justify-between mt-8 pt-6 border-t border-gold-500/20">
             <button
               onClick={handleBack}
               disabled={currentStep === 1}
-              className="px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-lg font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-6 py-3 border border-gold-500/30 text-gold-500 rounded-lg font-inter font-medium hover:bg-gold-500/10 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Back
             </button>
@@ -168,7 +168,7 @@ export default function MultiStepForm() {
             <button
               onClick={handleNext}
               disabled={!validateStep(currentStep)}
-              className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-6 py-3 bg-forest-500 hover:bg-forest-600 text-white font-inter font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
             >
               {currentStep === 3 ? 'Continue to Email' : 'Next'}
             </button>

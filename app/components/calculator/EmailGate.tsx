@@ -41,15 +41,15 @@ export default function EmailGate({ onSubmit, isLoading }: EmailGateProps) {
   return (
     <div className="space-y-6">
       <div className="text-center">
-        <h3 className="text-2xl font-bold mb-2">Get Your Report</h3>
-        <p className="text-gray-600 dark:text-gray-400">
+        <h3 className="font-playfair text-2xl font-bold mb-2 text-gold-500">Get Your Report</h3>
+        <p className="text-gold-400/80 font-inter">
           Enter your email to receive your personalized opportunity cost analysis
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="email" className="block text-sm font-medium mb-2">
+          <label htmlFor="email" className="block text-sm font-medium mb-2 text-gold-400 font-inter">
             Email Address *
           </label>
           <input
@@ -62,18 +62,18 @@ export default function EmailGate({ onSubmit, isLoading }: EmailGateProps) {
             }}
             placeholder="your@email.com"
             disabled={isLoading}
-            className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full px-4 py-3 border border-gold-500/30 rounded-lg bg-charcoal-900 text-gold-200 placeholder:text-gold-500/40 focus:ring-2 focus:ring-gold-500 focus:border-gold-500 disabled:opacity-50 disabled:cursor-not-allowed font-inter"
             required
           />
           {error && (
-            <p className="text-sm text-red-600 dark:text-red-400 mt-1">{error}</p>
+            <p className="text-sm text-red-400 mt-1 font-inter">{error}</p>
           )}
         </div>
 
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full px-6 py-3 bg-forest-500 hover:bg-forest-600 text-white font-inter font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
         >
           {isLoading ? (
             <span className="flex items-center justify-center">
@@ -88,7 +88,7 @@ export default function EmailGate({ onSubmit, isLoading }: EmailGateProps) {
           )}
         </button>
 
-        <p className="text-xs text-center text-gray-500">
+        <p className="text-xs text-center text-gold-500/60 font-inter">
           We respect your privacy. Your email will only be used to send you the report.
         </p>
       </form>

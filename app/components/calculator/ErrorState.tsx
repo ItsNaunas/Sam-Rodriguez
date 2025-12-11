@@ -11,9 +11,9 @@ interface ErrorStateProps {
 export default function ErrorState({ message, onRetry }: ErrorStateProps) {
   return (
     <div className="flex flex-col items-center justify-center py-12 space-y-4">
-      <div className="w-16 h-16 bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center">
+      <div className="w-16 h-16 bg-red-900/20 rounded-full flex items-center justify-center border border-red-500/30">
         <svg 
-          className="w-8 h-8 text-red-600 dark:text-red-400" 
+          className="w-8 h-8 text-red-400" 
           fill="none" 
           stroke="currentColor" 
           viewBox="0 0 24 24"
@@ -28,14 +28,14 @@ export default function ErrorState({ message, onRetry }: ErrorStateProps) {
       </div>
       
       <div className="text-center max-w-md">
-        <h3 className="text-xl font-semibold mb-2">Something went wrong</h3>
-        <p className="text-gray-600 dark:text-gray-400 mb-6">
+        <h3 className="font-playfair text-xl font-semibold mb-2 text-gold-500">Something went wrong</h3>
+        <p className="text-gold-400/80 mb-6 font-inter">
           {message || 'We encountered an error while calculating your opportunity cost. Please try again.'}
         </p>
         
         <button
           onClick={onRetry}
-          className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+          className="px-6 py-3 bg-forest-500 hover:bg-forest-600 text-white font-inter font-semibold rounded-lg transition-colors shadow-lg"
         >
           Try Again
         </button>

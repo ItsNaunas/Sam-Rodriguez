@@ -47,17 +47,17 @@ export default function CalculatorModal({ isOpen, onClose }: CalculatorModalProp
       {/* Modal Content */}
       <div className="flex min-h-full items-center justify-center p-4">
         <div
-          className="relative w-full max-w-4xl bg-gray-50 dark:bg-gray-900 rounded-2xl shadow-2xl overflow-hidden"
+          className="relative w-full max-w-4xl bg-charcoal-900 rounded-2xl shadow-2xl overflow-hidden border border-gold-500/20"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Close Button */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors shadow-lg"
+            className="absolute top-4 right-4 z-10 p-2 rounded-full bg-charcoal-800 hover:bg-charcoal-700 border border-gold-500/30 transition-colors shadow-lg"
             aria-label="Close calculator"
           >
             <svg
-              className="w-6 h-6 text-gray-600 dark:text-gray-400"
+              className="w-6 h-6 text-gold-500"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -72,17 +72,17 @@ export default function CalculatorModal({ isOpen, onClose }: CalculatorModalProp
           </button>
 
           {/* Header */}
-          <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-6">
-            <h2 className="text-3xl font-bold mb-2">
+          <div className="bg-gradient-to-r from-gold-500/20 to-gold-600/20 border-b border-gold-500/30 px-8 py-6">
+            <h2 className="font-playfair text-3xl font-bold mb-2 text-gold-500">
               Opportunity Cost Calculator
             </h2>
-            <p className="text-blue-100">
+            <p className="text-gold-400/90 font-inter">
               Discover the hidden revenue you're leaving on the table
             </p>
           </div>
 
           {/* Form Content */}
-          <div className="p-8">
+          <div className="p-8 bg-charcoal-900">
             <MultiStepForm />
           </div>
         </div>
